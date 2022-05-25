@@ -1,0 +1,1 @@
+'{"name":"mystatic", "age":30, "car":null}'
