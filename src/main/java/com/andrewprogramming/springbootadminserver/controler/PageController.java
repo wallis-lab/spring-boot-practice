@@ -2,6 +2,7 @@ package com.andrewprogramming.springbootadminserver.controler;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,5 +20,10 @@ public class PageController {
     return "nidaye";
   }
   
-
+@GetMapping("/show")
+public String showPage(Model model) {
+	model.addAttribute("msg", "heelo springboot thymeleaf");
+	
+	return "hello88";
+}
 }
