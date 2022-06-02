@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -8,5 +8,148 @@
 <h1>Hello 88 them</h1>
 
 <h2 th:text="${msg}"></h2>
+
+<h2 th:text="${#strings.isEmpty(msg)}"></h2>
+
+
+<h2 th:text="${#strings.contains(msg,'springboot')}"></h2>
+
+<br/>
+
+
+<h2 th:text="${#dates.format(date)}"></h2>
+
+<h2 th:text="${#dates.format(date,'yyyy/MM/dd')}"></h2>
+<br/>
+
+<div>
+<span th:if="${gender}=='male'">
+	gender:male
+</span>
+
+<span th:if="${gender}=='female'">
+	gender:female
+</span>
+
+
+
+</div>
+<br/>
+
+<div th:switch="${id}">
+
+<span th:case="1"> ID=1</span>
+<span th:case="2"> ID=2</span>
+<span th:case="3"> ID=3</span>
+<span th:case="*"> ID=4</span>
+
+
+</div>
+
+<br/>
+
+<div >
+	<table border="1" width="50%">
+	<tr>
+		<th> ID</th>
+		<th> Name</th>
+		<th> Age</th>
+	</tr>
+	
+	<tr th:each="u:${List}">
+		<td th:text="${u.getId()}"></td>
+		<td th:text="${u.getName()}"></td>
+		<td th:text="${u.getAge()}"></td>
+	</tr>
+	
+	</table>
+
+</div>
+
+
+
+
+<div >
+	<table border="1" width="50%">
+	<tr>
+		<th> ID</th>
+		<th> Name</th>
+		<th> Age</th>
+		<th> index</th>
+		<th> count</th>
+		<th> size</th>
+		<th> odd</th>
+		<th> even</th>
+		<th> first</th>
+		<th> last</th>
+	</tr>
+	
+	<tr th:each="u, v:${List}">
+		<td th:text="${u.getId()}"></td>
+		<td th:text="${u.getName()}"></td>
+		<td th:text="${u.getAge()}"></td>
+		
+		<td th:text="${v.index}"></td>
+		<td th:text="${v.count}"></td>
+		<td th:text="${v.size}"></td>
+		<td th:text="${v.odd}"></td>
+		<td th:text="${v.even}"></td>
+		<td th:text="${v.first}"></td>
+		<td th:text="${v.last}"></td>  
+	</tr>
+	
+	</table>
+
+</div>
+
+
+<div>
+
+HttpServletRequest: <span th:text="${#request.getAttribute('req')}"/>
+<span th:text="${#request.getAttribute('req')}"/>
+
+<br/>
+HttpServletRequest: <span th:text="${#request.getSession().getAttribute('ses')}"/>
+<span th:text="${#request.getSession().getAttribute('ses')}"/>
+<br/>
+HttpServletRequest: <span th:text="${#request.getSession().getServletContext().getAttribute('con')}"/>
+<span th:text="${#request.getSession().getServletContext().getAttribute('con')}"/>
+
+
+<br/>
+
+HttpSession: <span th:text="${session.ses}"/>
+			 <span th:text="${#session.getAttribute('ses')}"/>
+
+<br/>
+Application: <span th:text="${application.con}"/>
+			 <span th:text="${#servletContext.getAttribute('con')}"/>
+<br/>
+
+
+<hr/>
+<a th:href="@{http://www.baidu.com}" >打开百度</a>
+<a th:href="@{/show1}" >打开你大爷</a>
+
+<hr/>
+
+<a th:href="@{'/showParam?id='+${id}+'&name='+${name}}">传递参数</a>
+<hr/>
+<a th:href="@{/showParam(id=${id},name=${name})}">传递参数</a>
+<hr/>
+
+<a th:href="@{/showParam/{id}(id=1)}">传递参数</a>
+
+
+<hr/>
+
+<hr/>
+
+<hr/>
+
+
+
+
+</div>
 </body>
 </html>
